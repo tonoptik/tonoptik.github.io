@@ -1,0 +1,179 @@
+/* TONOPTIK - Minimalist Art Portfolio */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif;
+    font-size: 12px;
+    color: #4c4c4c;
+    background: #ffffff;
+    padding: 40px;
+    line-height: 1.4;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Header */
+header {
+    padding: 22px 0;
+    margin-bottom: 10px;
+}
+
+.logo {
+    display: block;
+}
+
+.logo img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Navigation */
+nav {
+    margin-bottom: 30px;
+    border-top: 1px solid #ffffff;
+    border-bottom: 1px solid #ffffff;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+nav ul li a {
+    display: inline-block;
+    padding: 0.6em 1em;
+    font-size: 18px;
+    color: #727272;
+    text-decoration: none;
+    border-left: 1px solid #ffffff;
+}
+
+nav ul li:first-child a {
+    border-left: none;
+    padding-left: 0;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+    text-decoration: underline;
+}
+
+/* Main Content */
+main {
+    padding: 30px 0;
+}
+
+/* Page Title */
+h1 {
+    font-size: 22px;
+    font-weight: normal;
+    color: #4c4c4c;
+    margin-bottom: 1.5em;
+}
+
+h2 {
+    font-size: 18px;
+    font-weight: normal;
+    color: #4c4c4c;
+    margin: 1.5em 0 0.5em 0;
+}
+
+h3 {
+    font-size: 14px;
+    font-weight: normal;
+    color: #727272;
+    margin: 1em 0 0.5em 0;
+}
+
+/* Links */
+a {
+    color: #999999;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Content */
+p {
+    font-size: 13px;
+    line-height: 1.6;
+    margin-bottom: 1em;
+}
+
+/* Images */
+img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ffffff;
+}
+
+/* Gallery Grid */
+.gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.gallery-item {
+    text-align: center;
+}
+
+.gallery-item img {
+    max-width: 100%;
+    margin-bottom: 10px;
+}
+
+.gallery-item a {
+    display: block;
+    font-size: 14px;
+    color: #999999;
+}
+
+/* About Page */
+.about-image {
+    margin-bottom: 20px;
+}
+
+.about-text {
+    font-size: 13px;
+    line-height: 1.6;
+    color: #010101;
+}
+
+.exhibition-list {
+    margin-top: 20px;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+/* Video/Audio Embeds */
+.embed-container {
+    margin: 20px 0;
+}
+
+.embed-container iframe {
+    max-width: 100%;
+}
+
+/* Responsive */
+@media (max-width: 680px) {
+    body {
+        padding: 20px;
+    }
+
+    nav ul li a {
+        font-size: 16px;
+        padding: 0.5em 0.8em;
+    }
+}
