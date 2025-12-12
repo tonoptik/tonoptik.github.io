@@ -118,6 +118,17 @@ img {
     border: 1px solid #ffffff;
 }
 
+/* Featured Content */
+.featured {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.featured img {
+    max-width: 100%;
+    height: auto;
+}
+
 /* Gallery Grid */
 .gallery {
     display: flex;
@@ -138,6 +149,22 @@ img {
     display: block;
     font-size: 14px;
     color: #999999;
+}
+
+/* Installation Detail Pages */
+.installation-detail {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.installation-detail img {
+    max-width: 100%;
+    margin-bottom: 20px;
+}
+
+.installation-detail p {
+    font-size: 13px;
+    margin-top: 20px;
 }
 
 /* About Page */
@@ -180,6 +207,13 @@ img {
 
 .release:last-child {
     border-bottom: none;
+}
+
+.release img {
+    max-width: 400px;
+    width: 100%;
+    margin-bottom: 15px;
+    display: block;
 }
 
 .release h3 {
