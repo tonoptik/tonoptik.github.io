@@ -78,6 +78,39 @@ website/
 2. Create or update relevant HTML page
 3. Commit and push
 
+### Updating Gallery Images
+**IMPORTANT: Follow this exact workflow to avoid broken images on the live site**
+
+1. **Check existing thumbnail dimensions first:**
+   ```bash
+   python -c "from PIL import Image; import os; os.chdir(r'D:\art\tonoptik\website\images\works'); imgs = ['elementary.png', 'instinkt2.jpg', 'percept.jpg']; [print(img, Image.open(img).size) for img in imgs]"
+   ```
+   Gallery thumbnails are **640px wide** (heights vary: 360-480px)
+
+2. **Prepare the new image:**
+   - Save original as `*-original.jpg` in `images/works/` (for archival)
+   - Crop and resize to 640px wide thumbnail:
+   ```bash
+   python -c "from PIL import Image; img = Image.open(r'D:\art\tonoptik\website\images\works\ARTWORK-original.jpg'); width, height = img.size; target_ratio = 640/480; crop_height = int(width / target_ratio); top = (height - crop_height) // 3; cropped = img.crop((0, top, width, top + crop_height)); resized = cropped.resize((640, 480), Image.Resampling.LANCZOS); resized.save(r'D:\art\tonoptik\website\images\works\ARTWORK.jpg', 'JPEG', quality=95)"
+   ```
+
+3. **Commit image BEFORE updating HTML:**
+   ```bash
+   git add images/works/ARTWORK.jpg
+   git commit -m "Add ARTWORK gallery thumbnail"
+   git push
+   ```
+
+4. **Then update HTML pages:**
+   - Edit `pages/installations.html` or detail pages
+   - Reference the thumbnail: `../images/works/ARTWORK.jpg`
+   - Commit and push HTML changes
+
+**Common mistakes to avoid:**
+- DO NOT update HTML to reference an image before committing the image file
+- DO NOT use original full-size images (3000+ px) directly in gallery
+- DO NOT skip the resize step - maintain 640px width standard
+
 ### Common Commands
 ```bash
 git status                    # Check changes
