@@ -6,9 +6,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This is the website project for **TONOPTIK**, an art studio specializing in new media, audiovisual, light, and sound art with an emphasis on minimalist aesthetics and experimentation.
 
-### Current Website Reference
+### Website Overview
 
-The existing website is hosted on Blogger at http://www.tonoptik.com/ and serves as the reference for content and design direction.
+The TONOPTIK website is now live at https://tonoptik.com, migrated from the original Blogger site. The new site maintains the original content and design direction while using GitHub Pages for hosting.
 
 **Site Structure:**
 - **installations** - Portfolio of installation artworks (REDUKTOR, ELEMENTARY, INSTINKT 2, etc.)
@@ -32,8 +32,8 @@ TONOPTIK is a laureate of the Spanish MADATAC Award, won a special prize from Cy
 ## Repository & Hosting
 
 - **Repository:** https://github.com/tonoptik/tonoptik.github.io
-- **Live URL:** https://tonoptik.github.io (GitHub Pages)
-- **Custom Domain:** tonoptik.com (to be configured later)
+- **Live URL:** https://tonoptik.com (custom domain) | https://www.tonoptik.com (with redirect)
+- **GitHub Pages URL:** https://tonoptik.github.io (redirects to custom domain)
 
 ## Project Structure
 
@@ -88,8 +88,8 @@ git push                      # Deploy to GitHub Pages
 
 ## Current State
 
-**Status:** Website fully complete with all Blogger content migrated
-**Last Updated:** 2025-12-13
+**Status:** Website fully complete with custom domain configured and live
+**Last Updated:** 2025-12-14
 
 ### Completed:
 - GitHub CLI installed and authenticated as `tonoptik`
@@ -111,9 +111,19 @@ git push                      # Deploy to GitHub Pages
   - Hardware/software details
 - All commits pushed to GitHub
 - GitHub Pages confirmed live at https://tonoptik.github.io
+- Custom domain configured and live:
+  - GoDaddy DNS configured with 4 A records pointing to GitHub Pages IPs (185.199.108.153, 109, 110, 111)
+  - CNAME record for www subdomain pointing to tonoptik.github.io
+  - Old Blogger DNS records removed
+  - GitHub Pages custom domain configured via API
+  - CNAME file created and pushed to repository
+  - HTTPS certificate approved and enforced (expires March 13, 2026)
+  - DNS propagation confirmed working
 
 ### Live Site:
-**URL:** https://tonoptik.github.io
+**Primary URL:** https://tonoptik.com
+**WWW URL:** https://www.tonoptik.com (redirects to primary)
+**GitHub Pages URL:** https://tonoptik.github.io (redirects to custom domain)
 
 ### Pages Status:
 | Page | Status | Content |
@@ -139,12 +149,12 @@ git push                      # Deploy to GitHub Pages
 11. MEDIALAB - `pages/installations/medialab.html`
 
 ### Optional Future Enhancements:
-1. Configure custom domain (tonoptik.com) to point to GitHub Pages
-2. Add more interactive features or animations (if desired)
-3. SEO optimization and meta tags
-4. Performance optimization (image compression, lazy loading, etc.)
+1. Add more interactive features or animations (if desired)
+2. SEO optimization and meta tags
+3. Performance optimization (image compression, lazy loading, etc.)
+4. Monitor HTTPS certificate renewal (currently expires March 13, 2026)
 
 ### Resume Prompt for Next Session:
 ```
-TONOPTIK website is fully complete with all Blogger content migrated. The GitHub Pages site at https://tonoptik.github.io has all installations, videos, tracks, and about content matching the original Blogger site. If needed: configure custom domain (tonoptik.com).
+TONOPTIK website is fully complete and live at https://tonoptik.com with custom domain configured. All Blogger content has been migrated including installations, videos, tracks, and about pages. The site uses GitHub Pages hosting with HTTPS enforced. DNS is configured via GoDaddy with proper A records and CNAME for www subdomain. HTTPS certificate expires March 13, 2026.
 ```
