@@ -1,5 +1,29 @@
 /* TONOPTIK - Minimalist Art Portfolio */
 
+/* CSS Custom Properties for Light/Dark Mode */
+:root {
+    --bg-color: #ffffff;
+    --text-primary: #4c4c4c;
+    --text-secondary: #727272;
+    --text-tertiary: #999999;
+    --border-color: #ffffff;
+    --separator-color: #f0f0f0;
+    --logo-invert: 0;
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-color: #000000;
+        --text-primary: #b3b3b3;
+        --text-secondary: #8d8d8d;
+        --text-tertiary: #666666;
+        --border-color: #000000;
+        --separator-color: #1a1a1a;
+        --logo-invert: 1;
+    }
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -9,8 +33,8 @@
 body {
     font-family: Arial, Tahoma, Helvetica, FreeSans, sans-serif;
     font-size: 12px;
-    color: #4c4c4c;
-    background: #ffffff;
+    color: var(--text-primary);
+    background: var(--bg-color);
     padding: 40px;
     line-height: 1.4;
 }
@@ -33,13 +57,14 @@ header {
 .logo img {
     max-width: 100%;
     height: auto;
+    filter: invert(var(--logo-invert));
 }
 
 /* Navigation */
 nav {
     margin-bottom: 30px;
-    border-top: 1px solid #ffffff;
-    border-bottom: 1px solid #ffffff;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
 }
 
 nav ul {
@@ -52,9 +77,9 @@ nav ul li a {
     display: inline-block;
     padding: 0.6em 1em;
     font-size: 18px;
-    color: #727272;
+    color: var(--text-secondary);
     text-decoration: none;
-    border-left: 1px solid #ffffff;
+    border-left: 1px solid var(--border-color);
 }
 
 nav ul li:first-child a {
@@ -76,34 +101,34 @@ main {
 h1 {
     font-size: 22px;
     font-weight: normal;
-    color: #4c4c4c;
+    color: var(--text-primary);
     margin-bottom: 0.5em;
 }
 
 h2 {
     font-size: 18px;
     font-weight: normal;
-    color: #4c4c4c;
+    color: var(--text-primary);
     margin: 1.5em 0 0.5em 0;
 }
 
 h3 {
     font-size: 14px;
     font-weight: normal;
-    color: #727272;
+    color: var(--text-secondary);
     margin: 1.5em 0 0.5em 0;
 }
 
 .subtitle {
     font-size: 13px;
-    color: #999999;
+    color: var(--text-tertiary);
     margin-bottom: 1.5em;
     font-style: italic;
 }
 
 /* Links */
 a {
-    color: #999999;
+    color: var(--text-tertiary);
     text-decoration: none;
 }
 
@@ -122,7 +147,7 @@ p {
 img {
     max-width: 100%;
     height: auto;
-    border: 1px solid #ffffff;
+    border: 1px solid var(--border-color);
 }
 
 /* Featured Content */
@@ -155,7 +180,7 @@ img {
 .gallery-item a {
     display: block;
     font-size: 14px;
-    color: #999999;
+    color: var(--text-tertiary);
 }
 
 /* Installation Detail Pages */
@@ -202,7 +227,7 @@ img {
 .about-text {
     font-size: 13px;
     line-height: 1.6;
-    color: #010101;
+    color: var(--text-primary);
 }
 
 .exhibition-list {
@@ -229,7 +254,7 @@ img {
 
 .release {
     padding: 15px 0;
-    border-bottom: 1px solid #f0f0f0;
+    border-bottom: 1px solid var(--separator-color);
 }
 
 .release:last-child {
@@ -245,19 +270,19 @@ img {
 
 .release h3 {
     font-size: 16px;
-    color: #4c4c4c;
+    color: var(--text-primary);
     margin-bottom: 8px;
 }
 
 .release-info {
     font-size: 12px;
-    color: #999999;
+    color: var(--text-tertiary);
     margin-bottom: 5px;
 }
 
 .release a {
     font-size: 12px;
-    color: #999999;
+    color: var(--text-tertiary);
 }
 
 /* Responsive */
