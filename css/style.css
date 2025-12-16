@@ -160,6 +160,8 @@ img {
 .featured img {
     max-width: 100%;
     height: auto;
+    filter: invert(var(--logo-invert));
+    border: none;
 }
 
 /* Gallery Grid */
