@@ -19,11 +19,19 @@ The TONOPTIK website is now live at https://tonoptik.com, migrated from the orig
 ### Design Philosophy
 
 The website reflects TONOPTIK's artistic philosophy with a timeless minimalist approach:
-- Ultra-minimalist white aesthetic
+- Ultra-minimalist white aesthetic with automatic dark mode support
 - Clean, sparse layouts
 - Gray text palette (#999999, #727272, #4c4c4c on white)
 - Sans-serif typography
 - No decorative elements - focus on the artwork itself
+
+**Dark Mode Features:**
+- Automatically follows system preference via CSS `@media (prefers-color-scheme: dark)`
+- Pure black background (#000000) with inverted gray text colors
+- Logo automatically inverts (CSS filter) for visibility
+- All artwork/photography images remain unchanged (no inversion)
+- Zero JavaScript implementation - pure CSS solution
+- No manual toggle required
 
 ### Studio Information
 
@@ -81,27 +89,27 @@ website/
 ### Updating Gallery Images
 **IMPORTANT: Follow this exact workflow to avoid broken images on the live site**
 
-1. **Check existing thumbnail dimensions first:**
-   ```bash
-   python -c "from PIL import Image; import os; os.chdir(r'D:\art\tonoptik\website\images\works'); imgs = ['elementary.png', 'instinkt2.jpg', 'percept.jpg']; [print(img, Image.open(img).size) for img in imgs]"
-   ```
-   Gallery thumbnails are **640px wide** (heights vary: 360-480px)
+**Gallery Image Standard:** All installation gallery thumbnails must be **640x360 pixels** (16:9 ratio)
 
-2. **Prepare the new image:**
-   - Save original as `*-original.jpg` in `images/works/` (for archival)
-   - Crop and resize to 640px wide thumbnail:
+1. **Prepare the new image:**
+   - Save original as `*-original.jpg` or `*-original.heic` in `images/works/` (for archival)
+   - Convert HEIC to JPG if needed:
    ```bash
-   python -c "from PIL import Image; img = Image.open(r'D:\art\tonoptik\website\images\works\ARTWORK-original.jpg'); width, height = img.size; target_ratio = 640/480; crop_height = int(width / target_ratio); top = (height - crop_height) // 3; cropped = img.crop((0, top, width, top + crop_height)); resized = cropped.resize((640, 480), Image.Resampling.LANCZOS); resized.save(r'D:\art\tonoptik\website\images\works\ARTWORK.jpg', 'JPEG', quality=95)"
+   python -c "from PIL import Image; from pillow_heif import register_heif_opener; register_heif_opener(); img = Image.open(r'D:\art\tonoptik\website\images\works\ARTWORK-original.heic'); img.convert('RGB').save(r'D:\art\tonoptik\website\images\works\ARTWORK.jpg', 'JPEG', quality=95)"
+   ```
+   - Crop and resize to 640x360:
+   ```bash
+   python -c "from PIL import Image; img = Image.open(r'D:\art\tonoptik\website\images\works\ARTWORK-original.jpg'); width, height = img.size; target_ratio = 640/360; crop_height = int(width / target_ratio); top = (height - crop_height) // 2; cropped = img.crop((0, top, width, top + crop_height)); resized = cropped.resize((640, 360), Image.Resampling.LANCZOS); resized.save(r'D:\art\tonoptik\website\images\works\ARTWORK.jpg', 'JPEG', quality=95)"
    ```
 
-3. **Commit image BEFORE updating HTML:**
+2. **Commit image BEFORE updating HTML:**
    ```bash
    git add images/works/ARTWORK.jpg
    git commit -m "Add ARTWORK gallery thumbnail"
    git push
    ```
 
-4. **Then update HTML pages:**
+3. **Then update HTML pages:**
    - Edit `pages/installations.html` or detail pages
    - Reference the thumbnail: `../images/works/ARTWORK.jpg`
    - Commit and push HTML changes
@@ -109,7 +117,8 @@ website/
 **Common mistakes to avoid:**
 - DO NOT update HTML to reference an image before committing the image file
 - DO NOT use original full-size images (3000+ px) directly in gallery
-- DO NOT skip the resize step - maintain 640px width standard
+- DO NOT skip the resize step - maintain 640x360 standard
+- DO NOT use varying heights - all gallery images must be exactly 640x360
 
 ### Common Commands
 ```bash
@@ -122,7 +131,18 @@ git push                      # Deploy to GitHub Pages
 ## Current State
 
 **Status:** Website fully complete with custom domain configured and live
-**Last Updated:** 2025-12-14
+**Last Updated:** 2025-12-16
+
+### Recent Updates:
+- **Gallery Image Standardization (2025-12-16):**
+  - All 11 installation gallery thumbnails standardized to 640x360 pixels (16:9 ratio)
+  - Ensures uniform grid display on installations page
+  - Images: reduktor.jpg, elementary.png, instinkt2.jpg, space_invaders.jpg, instinkt.jpg, percept.jpg, 55845u.jpg, leuchtkraft.jpg, zikaden.jpg, portal.png, medialab.jpg
+
+- **REDUKTOR Page Updates (2025-12-16):**
+  - New detail photo from IMG_3083.HEIC (converted and cropped from bottom by 15%)
+  - Reorganized layout: photo → conception text → video → hardware components
+  - Updated YouTube embed to https://www.youtube.com/embed/I1hpcSXRXTk
 
 ### Completed:
 - GitHub CLI installed and authenticated as `tonoptik`
@@ -152,6 +172,12 @@ git push                      # Deploy to GitHub Pages
   - CNAME file created and pushed to repository
   - HTTPS certificate approved and enforced (expires March 13, 2026)
   - DNS propagation confirmed working
+- Dark mode implementation:
+  - Automatic system preference detection via CSS media query
+  - Pure black (#000000) background with inverted gray text
+  - Logo inverts automatically for visibility
+  - Artwork images remain unchanged
+  - Zero JavaScript - pure CSS solution using `@media (prefers-color-scheme: dark)`
 
 ### Live Site:
 **Primary URL:** https://tonoptik.com
@@ -189,5 +215,11 @@ git push                      # Deploy to GitHub Pages
 
 ### Resume Prompt for Next Session:
 ```
-TONOPTIK website is fully complete and live at https://tonoptik.com with custom domain configured. All Blogger content has been migrated including installations, videos, tracks, and about pages. The site uses GitHub Pages hosting with HTTPS enforced. DNS is configured via GoDaddy with proper A records and CNAME for www subdomain. HTTPS certificate expires March 13, 2026.
+TONOPTIK website is fully complete and live at https://tonoptik.com with custom domain configured. All Blogger content has been migrated including installations, videos, tracks, and about pages. The site uses GitHub Pages hosting with HTTPS enforced. DNS is configured via GoDaddy with proper A records and CNAME for www subdomain. Dark mode automatically follows system preference using pure CSS (no JavaScript). HTTPS certificate expires March 13, 2026.
+
+Recent work (2025-12-16): All 11 installation gallery thumbnails standardized to 640x360 pixels (16:9 ratio) for uniform display. REDUKTOR page updated with new detail photo, reorganized layout, and new YouTube video embed.
 ```
+
+### Important Notes:
+- Do not include info about Claude Code, Claude, or Sonnet in commit notes
+- All gallery images must be exactly 640x360 pixels
