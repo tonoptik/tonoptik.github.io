@@ -93,9 +93,14 @@ git log --oneline -10         # View recent commits
 ## Current State
 
 **Status:** Website fully operational and live
-**Last Updated:** 2025-12-16
+**Last Updated:** 2025-12-17
 
 ### Recent Work
+
+**2025-12-17:**
+- WebGL hero animation: static random 3D wireframe sculpture (unique on each page load)
+- Simplified animation: only rotation, no morphing
+- Reduced wireframe density (50x50) for cleaner aesthetic
 
 **2025-12-16:**
 - Gallery image standardization (all thumbnails now 640x360px)
@@ -104,6 +109,7 @@ git log --oneline -10         # View recent commits
 
 ### Key Features in Production
 
+✅ WebGL hero animation (Three.js wireframe - random static form, rotation only)
 ✅ Custom domain with HTTPS (expires March 13, 2026)
 ✅ 11 installation artworks with detail pages
 ✅ Automatic dark mode (pure CSS)
@@ -125,8 +131,12 @@ See [TECHNICAL.md](TECHNICAL.md#hosting--infrastructure) for DNS configuration d
 
 ```
 website/
-├── index.html              # Homepage
-├── css/style.css           # All styles + dark mode
+├── index.html              # Homepage with WebGL hero animation
+├── css/style.css           # All styles + dark mode + WebGL canvas styles
+├── js/
+│   ├── noise-functions.js      # 3D Simplex noise GLSL functions
+│   ├── spring-deform-shader.js # Vertex/fragment shaders
+│   └── hero-wireframe.js       # Main animation (random generation + rotation)
 ├── images/
 │   ├── works/              # Gallery thumbnails (640x360) + originals
 │   └── *.jpg/png           # Logo, featured, about images
@@ -161,9 +171,11 @@ website/
 ## Resume Prompt for Next Session
 
 ```
-TONOPTIK website live at https://tonoptik.com. GitHub Pages hosting with custom domain and HTTPS. All Blogger content migrated. Site features 11 installations, videos, tracks, and about pages. Dark mode automatically follows system preference (pure CSS). Gallery images standardized to 640x360px. HTTPS cert expires March 13, 2026.
+TONOPTIK website live at https://tonoptik.com. GitHub Pages hosting with custom domain and HTTPS. Site features 11 installations, videos, tracks, about pages. Dark mode automatic (pure CSS). Gallery images 640x360px. HTTPS cert expires March 13, 2026.
 
-Recent updates (2025-12-16): Gallery standardization complete, REDUKTOR page updated, dark mode implemented.
+WebGL hero: Three.js wireframe sculpture (800x450px, 50x50 segments). Random static form generated on each page load - only rotation animates. Lazy loaded, respects prefers-reduced-motion, dark mode via CSS filter invert. Three.js r160 from CDN.
+
+Recent: Static random WebGL (2025-12-17), gallery standardization, dark mode (2025-12-16).
 
 Docs: CLAUDE.md (operations), TECHNICAL.md (specs/history).
 ```

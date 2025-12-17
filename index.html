@@ -29,9 +29,63 @@
 
         <main>
             <div class="featured">
-                <img src="images/featured.jpg" alt="TONOPTIK">
+                <!-- Static fallback - loads immediately -->
+                <img src="images/featured.jpg"
+                     id="hero-fallback"
+                     class="hero-image"
+                     alt="TONOPTIK">
+
+                <!-- WebGL canvas - lazy loaded -->
+                <canvas id="hero-canvas"
+                        class="hero-canvas"
+                        aria-hidden="true"
+                        style="display: none;"></canvas>
             </div>
         </main>
     </div>
+
+    <!-- WebGL Hero Animation - Lazy Loading -->
+    <script>
+      // Respect user's motion preferences
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (!prefersReducedMotion) {
+        // Wait for page to fully load
+        window.addEventListener('load', function() {
+          // Small delay to ensure smooth first paint
+          setTimeout(function() {
+            // Load Three.js from CDN
+            const threeScript = document.createElement('script');
+            threeScript.src = 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js';
+            threeScript.async = true;
+
+            threeScript.onload = function() {
+              // Load noise functions
+              const noiseScript = document.createElement('script');
+              noiseScript.src = 'js/noise-functions.js';
+
+              noiseScript.onload = function() {
+                // Load shader code
+                const shaderScript = document.createElement('script');
+                shaderScript.src = 'js/spring-deform-shader.js';
+
+                shaderScript.onload = function() {
+                  // Load main animation
+                  const heroScript = document.createElement('script');
+                  heroScript.src = 'js/hero-wireframe.js';
+                  document.body.appendChild(heroScript);
+                };
+
+                document.body.appendChild(shaderScript);
+              };
+
+              document.body.appendChild(noiseScript);
+            };
+
+            document.body.appendChild(threeScript);
+          }, 200); // 200ms delay after load
+        });
+      }
+    </script>
 </body>
 </html>
