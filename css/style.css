@@ -167,41 +167,18 @@ img {
 }
 
 /* WebGL Hero Canvas */
-.hero-image,
 .hero-canvas {
     max-width: 100%;
     height: auto;
-    display: block;
+    display: none;
     margin: 0 auto;
-}
-
-.hero-canvas {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    opacity: 0;
-    transition: opacity 1.5s ease-in-out;
     filter: invert(var(--logo-invert)); /* Dark mode support */
 }
 
-.hero-canvas.active {
-    display: block;
-    opacity: 1;
-}
-
-.hero-image.fade-out {
-    opacity: 0;
-    transition: opacity 1.5s ease-in-out;
-}
-
-/* Reduced motion: keep static image only */
+/* Reduced motion: hide WebGL animation */
 @media (prefers-reduced-motion: reduce) {
     .hero-canvas {
         display: none !important;
-    }
-    .hero-image {
-        opacity: 1 !important;
     }
 }
 

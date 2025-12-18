@@ -165,7 +165,6 @@
   // ===== INITIALIZATION =====
   function init() {
     const canvas = document.getElementById('hero-canvas');
-    const fallbackImg = document.getElementById('hero-fallback');
 
     console.log('Initializing WebGL hero animation...');
     console.log('Canvas:', canvas);
@@ -178,11 +177,6 @@
         THREE: !!window.THREE,
         SpringDeformShader: !!window.SpringDeformShader
       });
-      // Keep static image visible if WebGL fails
-      if (fallbackImg) {
-        fallbackImg.classList.remove('fade-out');
-        fallbackImg.style.opacity = '1';
-      }
       return;
     }
 
@@ -241,11 +235,6 @@
       console.log('Material created successfully');
     } catch (error) {
       console.error('Error creating material:', error);
-      // Keep static image visible if material creation fails
-      if (fallbackImg) {
-        fallbackImg.classList.remove('fade-out');
-        fallbackImg.style.opacity = '1';
-      }
       return;
     }
 
@@ -300,12 +289,10 @@
 
     animate();
 
-    // Fade in canvas after successful initialization
+    // Display canvas after successful initialization
     setTimeout(() => {
-      console.log('Fading in WebGL canvas...');
-      canvas.classList.add('active');
+      console.log('Displaying WebGL canvas...');
       canvas.style.display = 'block';
-      fallbackImg.classList.add('fade-out');
     }, 100);
   }
 
