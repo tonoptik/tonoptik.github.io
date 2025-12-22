@@ -93,9 +93,13 @@ git log --oneline -10         # View recent commits
 ## Current State
 
 **Status:** Website fully operational and live
-**Last Updated:** 2025-12-17
+**Last Updated:** 2025-12-22
 
 ### Recent Work
+
+**2025-12-22:**
+- Added favicon.ico to all pages (16 total: index.html, 4 main pages, 11 installation pages)
+- Browser tab now displays TONOPTIK icon
 
 **2025-12-17:**
 - WebGL hero animation: static random 3D wireframe sculpture (unique on each page load)
@@ -111,6 +115,7 @@ git log --oneline -10         # View recent commits
 
 ✅ WebGL hero animation (Three.js wireframe - random static form, rotation only)
 ✅ Custom domain with HTTPS (expires March 13, 2026)
+✅ Favicon on all pages (browser tab icon)
 ✅ 11 installation artworks with detail pages
 ✅ Automatic dark mode (pure CSS)
 ✅ Video and music galleries
@@ -138,6 +143,7 @@ website/
 │   ├── spring-deform-shader.js # Vertex/fragment shaders
 │   └── hero-wireframe.js       # Main animation (random generation + rotation)
 ├── images/
+│   ├── favicon.ico         # Browser tab icon
 │   ├── works/              # Gallery thumbnails (640x360) + originals
 │   └── *.jpg/png           # Logo, featured, about images
 ├── pages/
@@ -171,11 +177,11 @@ website/
 ## Resume Prompt for Next Session
 
 ```
-TONOPTIK website live at https://tonoptik.com. GitHub Pages hosting with custom domain and HTTPS. Site features 11 installations, videos, tracks, about pages. Dark mode automatic (pure CSS). Gallery images 640x360px. HTTPS cert expires March 13, 2026.
+TONOPTIK website live at https://tonoptik.com. GitHub Pages hosting with custom domain and HTTPS. Site features 11 installations, videos, tracks, about pages. Dark mode automatic (pure CSS). Gallery images 640x360px. Favicon on all pages. HTTPS cert expires March 13, 2026.
 
 WebGL hero: Three.js wireframe sculpture (800x450px, 50x50 segments). Random static form generated on each page load - only rotation animates. Lazy loaded, respects prefers-reduced-motion, dark mode via CSS filter invert. Three.js r160 from CDN.
 
-Recent: Static random WebGL (2025-12-17), gallery standardization, dark mode (2025-12-16).
+Recent: Favicon added (2025-12-22), static random WebGL (2025-12-17), gallery standardization, dark mode (2025-12-16).
 
 Docs: CLAUDE.md (operations), TECHNICAL.md (specs/history).
 ```

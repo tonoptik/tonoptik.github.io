@@ -39,6 +39,7 @@ website/
 │   ├── spring-deform-shader.js # Vertex/fragment shaders for deformation
 │   └── hero-wireframe.js       # Main animation controller with spring physics
 ├── images/             # All images/artwork
+│   ├── favicon.ico     # Browser tab icon (16x16, 32x32, 48x48 multi-resolution)
 │   ├── logo.png        # TONOPTIK logo
 │   ├── about.jpg       # About page image
 │   ├── featured.jpg    # Homepage featured image (fallback if WebGL unsupported)
@@ -166,6 +167,12 @@ Each installation has a dedicated page with full descriptions, technical specs, 
   - YouTube/Vimeo embeds
 
 ### Recent Updates
+
+**2025-12-22 - Favicon Addition:**
+- Added favicon.ico to images/ directory (multi-resolution: 16x16, 32x32, 48x48)
+- Implemented favicon link tags across all 16 HTML pages
+- Uses relative paths appropriate for directory level (root vs pages/ vs pages/installations/)
+- Browser tabs now display TONOPTIK icon
 
 **2025-12-17 - WebGL Simplified to Static Random:**
 - Removed spring physics - deformation is now static (frozen)
