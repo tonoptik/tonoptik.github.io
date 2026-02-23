@@ -257,6 +257,31 @@ img {
     line-height: 1.8;
 }
 
+/* Social Links */
+.social-links {
+    margin-top: 30px;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.social-links a {
+    color: var(--text-tertiary);
+    display: inline-flex;
+    line-height: 0;
+}
+
+.social-links a:hover {
+    text-decoration: none;
+    opacity: 0.6;
+}
+
+.social-links svg {
+    width: 22px;
+    height: 22px;
+    fill: currentColor;
+}
+
 /* Video/Audio Embeds */
 .embed-container {
     margin: 20px 0;
